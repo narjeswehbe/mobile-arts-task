@@ -1,0 +1,85 @@
+.card{
+  width: 12rem;
+  height:15rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   align-items: center;
+   margin:20px;
+   box-shadow: 3px 3px 3px 3px rgb(199, 196, 196);
+   border-radius: 12px;
+   background-color: white;
+   gap:1rem;
+  
+  }
+  .card-auhtor{
+    color:#71717A ;  
+    opacity: 50%;
+    font-family: 'Poppins' , 'sans-serif';
+    text-transform: uppercase;
+    font-size:0.5rem;
+  
+  
+  }
+  .card-title{
+    text-transform: uppercase;
+    color:#000000;
+    font-family: 'Poppins' , 'sans-serif';
+    font-weight: 600;
+    font-size:14px;
+    text-align: center;
+   
+  }
+  .card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    
+  }
+
+  
+  .card-btn {
+    background-color:#4C1D95;
+    width: 100%;
+    border-style: none;
+    height:4rem;
+   border-bottom-left-radius: 12px;
+   border-bottom-right-radius: 12px;
+    padding:1rem;
+    text-transform: uppercase;
+    color:white;
+    font-family: 'Poppins' , 'sans-serif';
+  }
+  *{
+    margin:0;
+    padding:0;
+  }
+  .content{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .genres-title{
+    font-family: 'Poppins', 'sans-serif';
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #5B21B6; /* match the nav bar background color */
+    margin:1.5rem;
+    margin-bottom: 1rem;
+   
+  }
+  .card-img{
+    height:40%;
+    width: auto;
+    padding:1rem;
+    overflow: hidden;
+  }
+  .filters {
+    display: flex;
+    font-family: 'Poppins', 'sans-serif';
+    align-items: center;
+    gap: 1rem;
+    justify-content:flex-end;
+    margin-right:6rem;
+  }

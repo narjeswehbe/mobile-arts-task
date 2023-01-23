@@ -1,0 +1,60 @@
+.login{
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding:4rem;
+  margin:2rem;
+  gap:0.5rem;
+  
+}
+input {
+  background-color: #eeebf2; /* light purple color */
+  border: none; /* remove border */
+  padding: 10px; /* add padding for a nice-looking style */
+  font-size: 16px; /* increase font size for readability */
+  border-radius: 5px; /* add rounded corners for a nice-looking style */
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1); /* add a subtle box shadow for a nice-looking style */
+}
+input[type="submit"] {
+  background-color: #5B21B6;
+  color: white; 
+  padding: 10px 20px; 
+  border-radius: 5px; 
+  border: none; 
+  font-size: 1rem;
+  margin-top:1rem;
+  width: 40%;;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1); /* add a subtle box shadow for a nice-looking style */
+}
+input[type="submit"]:hover {
+  background-color: #4C1D95;
+  cursor: pointer; 
+  justify-self: flex-end;
+  
+}
+label {
+  font-size: 16px; 
+  font-weight: bold;
+  margin-bottom: 8px; 
+  display: block;
+  font-family: 'Poppins', 'sans-serif';
+}
+
+
+.row{
+  display: flex !important;
+  margin-top:3rem;
+}
+@media only screen and (max-width: 600px) {
+  .hero-img {
+   display:none;
+  }
+}
+  @media only screen and (max-width: 600px) {
+    input[type="submit"] {
+      width: 60%;;
+    }
+    .login{
+      width:90%
+    }
+}

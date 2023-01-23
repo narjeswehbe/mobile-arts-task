@@ -1,0 +1,47 @@
+<div *ngIf="data.id==null" class="error">
+   {{Message}}
+</div>
+
+<div class="grid-container">
+  <div class="image-col">
+    <!-- <img src="https://play-lh.googleusercontent.com/pEZvyjV4HNa9dwxYB4g-YzRVmbtNEwKdo_YpGbkDucVftFAx93gXrXYJYnTaT8TaDg"  -->
+    <img src="{{data.iconUrl}}"
+      alt="App Image" height="200" width="200">
+  </div>
+  <div class="info-col">
+    <div class="app-name">App Name : {{data.name}}</div>
+
+
+    <div class="rating" id="rating">
+      <igc-rating  readonly="true" value="{{data.rating}}" min="1" max="5"></igc-rating>
+                      </div>
+                    </div>
+                    <div class="details-col">
+                      <div class="publisher-name">Publisher Name :
+                        {{data.publisher}}</div>
+                      <div class="genres">
+                         Genres:
+                         <div *ngFor="let g of data.genres">
+                            {{g}}
+                         </div>
+                        
+                      </div>
+
+
+                    </div>
+                    <div class="description">
+                      <strong>description</strong>
+                      <p [innerHTML]="formatted"></p>
+
+                    </div>
+                  </div>
+                  <ngx-slick-carousel class=" ss carousel"
+                    #slickModal="slick-carousel" [config]="slideConfig">
+                    <!-- <div ngxSlickItem *ngFor="let image of data.screenshot_urls" class="slide">  
+    <img src="{{ image }}"  >  
+  </div>   -->
+                    <div ngxSlickItem *ngFor="let slide of data.screenshot_urls"
+                      class="slide">
+                      <img src="{{slide}}" alt="">
+                    </div>
+                  </ngx-slick-carousel>

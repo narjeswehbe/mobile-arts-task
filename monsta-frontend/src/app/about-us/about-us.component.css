@@ -1,0 +1,15 @@
+.row{
+  display: flex;
+  font-family: 'Poppins', 'sans-serif';
+  gap:3rem;
+  margin:4rem;
+  line-height: 1rem;
+}
+.image-col{
+  
+ 
+}
+.content{
+  width:50%;
+  line-height:2rem;
+}

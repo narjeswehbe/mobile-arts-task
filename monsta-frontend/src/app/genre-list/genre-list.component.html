@@ -1,0 +1,76 @@
+<h2 class="genres-title">All genres:</h2>
+<div class="filters">
+  <div class="filter-item">
+    <label>Country:</label>
+    <select  (change)="onCountryChange($event)" class="filter-dropdown" id="country-filter">
+      <option #country value="US"> United States </option>
+      <option #country value="DE">Germany</option>
+      <option #country value="FR">France</option>
+      <!-- Add more options for other countries -->
+    </select>
+  </div>
+  <div class="filter-item">
+    <label>Date:</label>
+    <input  value="{{date}}"  (change)="onChangeDate($event)" class="filter-datepicker" type="date" id="date-filter" />
+  </div>
+  <div class="filter-item">
+      <div class="button-group">
+        <button class="store-btn" id="android-btn" (click)="selectStore('android')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25.034" height="28.987" viewBox="0 0 25.034 28.987">
+          <g id="Group_1925" data-name="Group 1925" transform="translate(-1 -18)">
+            <g id="_104471_android_icon" data-name="104471_android_icon" transform="translate(1 18)">
+              <path id="Path_15969" data-name="Path 15969" d="M26.754,6.8l.324-.474L27.4,5.86l.715-1.049a.278.278,0,0,0-.079-.389.291.291,0,0,0-.4.078l-.766,1.125-.322.473-.327.479a9.8,9.8,0,0,0-6.824,0L19.068,6.1l-.322-.473L17.978,4.5a.291.291,0,0,0-.4-.078.277.277,0,0,0-.079.389l.715,1.049.319.468.324.474a6.383,6.383,0,0,0-4.081,5.614H30.835A6.383,6.383,0,0,0,26.754,6.8Zm-7.389,3.37a.841.841,0,1,1,.86-.841A.851.851,0,0,1,19.365,10.171Zm6.881,0a.841.841,0,1,1,.861-.841A.851.851,0,0,1,26.247,10.171Z" transform="translate(-10.288 -4.374)" fill="#2fda7b"/>
+              <path id="Path_15970" data-name="Path 15970" d="M14.9,20.208h-.124V32.551a1.8,1.8,0,0,0,1.816,1.777H17.9a1.647,1.647,0,0,0-.069.467v3.554a1.721,1.721,0,0,0,3.442,0V34.794a1.693,1.693,0,0,0-.068-.467H24.4a1.646,1.646,0,0,0-.068.467v3.554a1.721,1.721,0,0,0,3.441,0V34.794a1.65,1.65,0,0,0-.068-.467h1.31a1.8,1.8,0,0,0,1.816-1.777V20.208H14.9Z" transform="translate(-10.288 -11.044)" fill="#2fda7b"/>
+              <path id="Path_15971" data-name="Path 15971" d="M8.7,20.208a1.683,1.683,0,0,0-1.683,1.684v7.2a1.683,1.683,0,0,0,3.366,0v-7.2A1.683,1.683,0,0,0,8.7,20.208Z" transform="translate(-7.021 -11.044)" fill="#2fda7b"/>
+              <path id="Path_15972" data-name="Path 15972" d="M45.542,20.208a1.682,1.682,0,0,0-1.683,1.684v7.2a1.682,1.682,0,1,0,3.365,0v-7.2A1.682,1.682,0,0,0,45.542,20.208Z" transform="translate(-22.189 -11.044)" fill="#2fda7b"/>
+            </g>
+          </g>
+        </svg>
+        </button>
+        <button   class="store-btn active" id="itunes-btn" (click)="selectStore('itunes')"><svg xmlns="http://www.w3.org/2000/svg" width="22.399" height="28.988" viewBox="0 0 22.399 28.988">
+          <g id="形状_1" transform="translate(-68.669 -26.449)">
+            <g id="Group_1923" data-name="Group 1923" transform="translate(68.669 26.449)">
+              <path id="Path_15973" data-name="Path 15973" d="M87.378,41.853a6.6,6.6,0,0,1,2.97-5.522,6.319,6.319,0,0,0-5.031-2.871c-2.141-.23-4.18,1.329-5.267,1.329s-2.762-1.3-4.538-1.263a6.694,6.694,0,0,0-5.692,3.636c-2.426,4.435-.62,11.007,1.743,14.607,1.156,1.759,2.534,3.739,4.342,3.666,1.743-.073,2.4-1.188,4.507-1.188s2.7,1.188,4.542,1.151c1.874-.036,3.062-1.793,4.209-3.559a16.43,16.43,0,0,0,1.905-4.123A6.363,6.363,0,0,1,87.378,41.853ZM83.914,31.077a6.624,6.624,0,0,0,1.432-4.628,6.064,6.064,0,0,0-4.052,2.2,6.283,6.283,0,0,0-1.46,4.485A5.012,5.012,0,0,0,83.914,31.077Z" transform="translate(-68.669 -26.449)" fill="#acacac" fill-rule="evenodd"/>
+            </g>
+          </g>
+        </svg>
+        </button>
+      </div>
+      
+   
+  </div>
+</div>
+
+ <div ng-if="isFetched">
+  <div ng-if="message==''" class="error">
+    {{message}}
+
+  </div>
+  <div class="content">
+  <div *ngFor="let genre of data" > 
+
+   
+    <div class="card">
+   <!--THIS IS A DEMO IMAGE -->
+        <img class="card-img"
+         
+        src="https://play-lh.googleusercontent.com/pEZvyjV4HNa9dwxYB4g-YzRVmbtNEwKdo_YpGbkDucVftFAx93gXrXYJYnTaT8TaDg" >
+      <div class="card-title">
+          {{genre.name}}
+      </div>   
+      <button  class="card-btn" (click)="goToGenre(genre.genre_id , genre.name)">
+        View All
+      </button>
+      
+  
+  
+    </div>
+   
+
+
+</div>
+  
+    
+  </div>
+  
+</div> 
