@@ -13,7 +13,9 @@ namespace MonstaBackend.Services
         {
             _configuration = configuration;
         }
-
+        
+        /* A direct API call without modification
+            */
         public async Task<List<Genre>> getAllGenres(String country , String date , String store)
         {
             var client = new HttpClient();
@@ -56,7 +58,10 @@ namespace MonstaBackend.Services
             return genres;
         }
 
-       
+         /** 
+          * the results of this API are not directly used , it is where we get to join between genres and
+          * applications and use it in later functions
+          */
 
         public async Task<List<Rank>> getAllRanks(String code, String date, String store)
         {
@@ -81,22 +86,13 @@ namespace MonstaBackend.Services
             }
             return ranks;
         }
-
-        public String AddGenreIcon(String genre_id, String code, String date, String store)
-        {
-            List<Rank> ranks = getAllRanks(code,date,store).Result;
-            String icon="";
-            foreach(var rank in ranks)
-            {
-                if(rank.genre_id == genre_id)
-                {
-                    icon = getAppDetails(rank.ranks[0] ,code ,store).Result.iconUrl;
-                    break;
-                }
-            }
-            return icon;
-
-        }
+        
+         /*
+          * Using a direct API without the need of modifing the results ,
+          * but instead of saving all the properties I only saved the attributes we are intreasted in
+          * using [JsonProperty] becuase the details return a long -not needed for our business case-
+          * 
+          */
 
         public async Task<App> getAppDetails(string appId , string country , string store)
         {
@@ -108,6 +104,26 @@ namespace MonstaBackend.Services
             return JsonConvert.DeserializeObject<App>(content);
 
         }
+
+        /**
+         * since there is no direct API at monsta to get App by genre , I am calling the API which fetches 
+         * the ranks , knowing that each group of ranks has there genre_id , I joined the applications with
+         * their genre 
+         * The API :
+         GET https://api.appmonsta.com/v1/stores/<store>/rankings/aggregate.json?country=<country_code>&date=<date>
+           This is the response schema from app monta :
+         {"ranks":["com.free.daily.horoscope.zodiac.secret","com.valpak.android",
+          "com.srpinfosoft.Claptoflashlightonoff","com.tuya.smart",...],
+           "country":"US",
+           "rank_id":"apps_movers_shakers",
+           "genre_id":"LIFESTYLE"}
+          Thats why I am :
+         -looping throught the ranks
+         - checking the genre_id of this rank , if it matches the genre_id I am getting the apps for
+
+         * 
+         */
+
         public List<App> getAppsByGenre(String genre_id, String code, String date, String store)
         {
             List<Rank> ranks = getAllRanks(code,date,store).Result;
@@ -131,6 +147,27 @@ namespace MonstaBackend.Services
                 }
             }
             return res;
+
+        }
+
+         /*
+          * To get the genre icon , which is the icon of the  first application in the genre
+          * I followed the same approach of fetching the Apps by genre , but breaking the loop as soon as 
+          I  find the first application  , then calling the API that fetches the details of a single app*/
+
+          public String AddGenreIcon(String genre_id, String code, String date, String store)
+        {
+            List<Rank> ranks = getAllRanks(code, date, store).Result;
+            String icon = "";
+            foreach (var rank in ranks)
+            {
+                if (rank.genre_id == genre_id)
+                {
+                    icon = getAppDetails(rank.ranks[0], code, store).Result.iconUrl;
+                    break;
+                }
+            }
+            return icon;
 
         }
     }
