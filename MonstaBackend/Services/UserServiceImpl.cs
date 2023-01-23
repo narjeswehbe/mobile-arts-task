@@ -45,7 +45,7 @@ namespace MonstaBackend.Services
                          jwtSettings["Issuer"],
                          jwtSettings["Audience"],
                          claims,
-                        expires: DateTime.UtcNow.AddMinutes(30),
+                        expires: DateTime.UtcNow.AddMinutes(1440),
                         signingCredentials: signIn);
 
 
